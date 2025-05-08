@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvtoMaktab - Bosh sahifa</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #22789f;
+            padding: 15px 30px;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #ffccbc;
+        }
+        .hero {
+            background: url('your-banner-image.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .section {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            text-align: center;
+            color:  #22789f;
+            margin-bottom: 20px;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .info .box {
+            flex: 1 1 300px;
+            background: #fbe9e7;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .video-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .video-section iframe, .video-section video {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border: 5px solid  #22789f;
+            border-radius: 10px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(31, 113, 167);
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">AvtoMaktab</div>
+        <div>
+         
+            <a href="avtmobil.php">Malumotlar</a>
+            <a href="avtomaktab.html">Ro'yxatdan o'tish</a>
+            <a href="aloqa.html">Aloqa</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div>
+            <h1>AvtoMaktabga Xush Kelibsiz!</h1>
+            <p>Eng yaxshi haydovchilik kurslari va qulay sharoitlar sizni kutmoqda 🚗</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Biz Haqimizda</h2>
+        <div class="info">
+            <div class="box">
+                <h3>Professional O'qituvchilar</h3>
+                <p>AvtoMaktabimiz tajribali va litsenziyaga ega o'qituvchilar bilan xizmat ko'rsatadi. Har bir o'quvchimizga individual yondashuv kafolatlanadi.</p>
+            </div>
+            <div class="box">
+                <h3>Modern Texnika</h3>
+                <p>Bizda zamonaviy va xavfsiz avtomobillar mavjud. O'quvchilarimiz uchun turli model va toifadagi mashinalar tayyorlangan.</p>
+            </div>
+            <div class="box">
+                <h3>Tez va Sifatli Xizmat</h3>
+                <p>Kurslarimiz qisqa muddatda yuqori sifat bilan o'tkaziladi. Yangi boshlovchilar va tajriba oshirmoqchi bo'lganlar uchun ham imkoniyatlar mavjud.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-fullscreen">
+        <style>
+            .video-fullscreen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #f9f9f9;
+                flex-direction: column;
+                text-align: center;
+            }
+            .video-fullscreen h2 {
+                margin-bottom: 20px;
+                font-size: 28px;
+                color: #b71c1c;
+            }
+            .video-fullscreen video {
+                width: 80%;
+                max-width: 1050px;
+                height: 550px;
+                border-radius: 10px;
+                border-radius: 10px;
+    border: 3px solid #b71c1c; /* 👉 Qo‘shilgan ramka */
+    box-shadow: 0 2px 1px rgba(0,0,0,0.1);
+            }
+        </style>
+    
+        <h2>Tanishtiruv Videosi</h2>
+        <video controls>
+            <source src="video_1.mp4" type="video/mp4">
+            Brauzeringiz video formatini qo'llab-quvvatlamaydi.
+        </video>
+    </div>
+    
+    
+    <div class="section">
+        <h2>Bizning Avto Galereya 🚘</h2>
+        <div class="gallery">
+            <!-- Bu yerga rasmlarni joylashtirasiz -->
+            <img src="img1.jpg" alt="Avtomobil 1">
+            <img src="img2.jpg" alt="Avtomobil 2">
+            <img src="img3.jpg" alt="Avtomobil 3">
+            <img src="img4.jpg" alt="Avtomobil 4">
+        </div>
+    </div>
+
+</body>
+</html>
