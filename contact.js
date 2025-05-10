@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const data = { ism, email, xabar };
 
-        fetch('https://node-2-g32w.onrender.com/aloqa', { // BU YERNI O‘ZGARTIRDIK
+        fetch('https://node-2-g32w.onrender.com/aloqa', {  // <=== URL to‘g‘rilandi!
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(result => {
             console.log(result); // Konsolga javobni chiqarish
-            if (result.message && result.message.includes('muvaffaqiyatli')) {
+            if (result.message === 'Xabar muvaffaqiyatli yuborildi') {
                 document.getElementById('resultMessage').innerHTML = 'Xabaringiz muvaffaqiyatli yuborildi!';
                 document.getElementById('resultMessage').style.color = 'green';
                 document.getElementById('contactForm').reset();
