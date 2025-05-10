@@ -1,4 +1,3 @@
-// contact.js
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault(); // Formani default yuborishni bloklaymiz
@@ -9,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const data = { ism, email, xabar };
 
-        fetch('https://node-2-g32w.onrender.com/api/contact', {
+        fetch('https://node-2-g32w.onrender.com/aloqa', { // BU YERNI O‘ZGARTIRDIK
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(result => {
             console.log(result); // Konsolga javobni chiqarish
-            if (result.success) {
+            if (result.message && result.message.includes('muvaffaqiyatli')) {
                 document.getElementById('resultMessage').innerHTML = 'Xabaringiz muvaffaqiyatli yuborildi!';
                 document.getElementById('resultMessage').style.color = 'green';
                 document.getElementById('contactForm').reset();
