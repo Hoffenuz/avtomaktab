@@ -14,7 +14,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #0d47a1;
+            background-color: cadetblue;
             padding: 15px 30px;
             color: white;
         }
@@ -38,7 +38,7 @@
         }
         .section h2 {
             text-align: center;
-            color: #0d47a1;
+            color: cadetblue;
             margin-bottom: 20px;
         }
         .contact-info {
@@ -57,7 +57,7 @@
         }
         .contact-info div i {
             font-size: 24px;
-            color: #0d47a1;
+            color: cadetblue;
         }
         .map {
             margin-top: 30px;
@@ -66,7 +66,7 @@
         .map iframe {
             width: 100%;
             height: 400px;
-            border: 5px solid #0d47a1;
+            border: 5px solid cadetblue;
             border-radius: 10px;
         }
         .form-section {
@@ -85,12 +85,12 @@
             font-size: 16px;
         }
         input:focus, textarea:focus {
-            border-color: #0d47a1;
+            border-color: cadetblue;
             outline: none;
         }
         button {
             padding: 12px;
-            background-color: #0d47a1;
+            background-color: cadetblue;
             color: white;
             font-size: 16px;
             border: none;
@@ -99,16 +99,98 @@
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #1565c0;
+            background-color: #5f9ea0;
         }
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: #0d47a1;
+            background-color: cadetblue;
             color: white;
             margin-top: 40px;
         }
         
+        /* Mobile menu styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            background-color: cadetblue;
+            z-index: 1000;
+            flex-direction: column;
+            padding-top: 60px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            display: block;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar div:nth-child(2) {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu, .overlay {
+                display: block;
+            }
+            
+            .section {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .map iframe {
+                height: 300px;
+            }
+        }
     </style>
     <!-- Agar iconlar ishlatmoqchi bo'lsangiz, FontAwesome qo'shing -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -122,6 +204,16 @@
             <a href="admin.html">Malumotlar</a>
             <a href="avtomaktab.html">Ro'yxatdan o'tish</a>
         </div>
+        <button class="mobile-menu-btn">☰</button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="overlay"></div>
+    <div class="mobile-menu">
+        <button class="close-btn">✕</button>
+        <a href="bosh.html">Bosh sahifa</a>
+        <a href="admin.html">Malumotlar</a>
+        <a href="avtomaktab.html">Ro'yxatdan o'tish</a>
     </div>
 
     <div class="section">
@@ -150,9 +242,29 @@
         </div>
     </div>
 
-
-    </div>
     <script src="contact.js"></script>
-
+    
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.style.display = 'block';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+    </script>
 </body>
 </html>

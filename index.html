@@ -14,7 +14,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #22789f;
+            background-color: cadetblue;
             padding: 15px 30px;
             color: white;
         }
@@ -57,7 +57,7 @@
         }
         .section h2 {
             text-align: center;
-            color:  #22789f;
+            color: cadetblue;
             margin-bottom: 20px;
         }
         .info {
@@ -81,7 +81,7 @@
             width: 80%;
             max-width: 800px;
             height: 450px;
-            border: 5px solid  #22789f;
+            border: 5px solid cadetblue;
             border-radius: 10px;
         }
         .gallery {
@@ -105,9 +105,100 @@
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: rgb(31, 113, 167);
+            background-color: cadetblue;
             color: white;
             margin-top: 40px;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            background-color: cadetblue;
+            z-index: 1000;
+            flex-direction: column;
+            padding-top: 60px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            display: block;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar div:nth-child(2) {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu, .overlay {
+                display: block;
+            }
+            
+            .section {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .video-fullscreen video {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -116,11 +207,20 @@
     <div class="navbar">
         <div class="logo">AvtoMaktab</div>
         <div>
-         
             <a href="admin.html">Malumotlar</a>
             <a href="avtomaktab.html">Ro'yxatdan o'tish</a>
             <a href="aloqa.html">Aloqa</a>
         </div>
+        <button class="mobile-menu-btn">☰</button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="overlay"></div>
+    <div class="mobile-menu">
+        <button class="close-btn">✕</button>
+        <a href="admin.html">Malumotlar</a>
+        <a href="avtomaktab.html">Ro'yxatdan o'tish</a>
+        <a href="aloqa.html">Aloqa</a>
     </div>
 
     <div class="hero">
@@ -162,7 +262,7 @@
             .video-fullscreen h2 {
                 margin-bottom: 20px;
                 font-size: 28px;
-                color: #b71c1c;
+                color: cadetblue;
             }
             .video-fullscreen video {
                 width: 80%;
@@ -170,8 +270,18 @@
                 height: 550px;
                 border-radius: 10px;
                 border-radius: 10px;
-    border: 3px solid #b71c1c; /* 👉 Qo‘shilgan ramka */
-    box-shadow: 0 2px 1px rgba(0,0,0,0.1);
+                border: 3px solid cadetblue;
+                box-shadow: 0 2px 1px rgba(0,0,0,0.1);
+            }
+            
+            @media (max-width: 768px) {
+                .video-fullscreen {
+                    min-height: auto;
+                    padding: 40px 0;
+                }
+                .video-fullscreen video {
+                    height: 300px;
+                }
             }
         </style>
     
@@ -194,8 +304,8 @@
 
     <!-- Video 2 -->
     <div>
-      <h3>Yo‘l harakati qoidalari (YHQ) 2024</h3>
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/xK8Ug1bdu9A" title="Yo‘l harakati qoidalari 2024" frameborder="0" allowfullscreen></iframe>
+      <h3>Yo'l harakati qoidalari (YHQ) 2024</h3>
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/xK8Ug1bdu9A" title="Yo'l harakati qoidalari 2024" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <!-- Video 3 -->
@@ -212,5 +322,27 @@
   </div>
     </div>
 
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.style.display = 'block';
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
