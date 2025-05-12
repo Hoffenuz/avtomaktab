@@ -116,17 +116,6 @@
             cursor: pointer;
         }
         
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 999;
-        }
-        
         @media (max-width: 768px) {
             .navbar .menu {
                 display: none;
@@ -136,7 +125,7 @@
                 display: block;
             }
             
-            .mobile-menu, .overlay {
+            .mobile-menu {
                 display: block;
             }
             
@@ -164,7 +153,6 @@
     </div>
     
     <!-- Mobile Menu -->
-    <div class="overlay"></div>
     <div class="mobile-menu">
         <button class="close-btn">✕</button>
         <a href="bosh.html">Bosh sahifa</a>
@@ -223,21 +211,13 @@
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const closeBtn = document.querySelector('.close-btn');
         const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.overlay');
         
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.add('active');
-            overlay.style.display = 'block';
         });
         
         closeBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
-            overlay.style.display = 'none';
-        });
-        
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.style.display = 'none';
         });
     </script>
 </body>
