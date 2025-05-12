@@ -145,7 +145,7 @@
         fetch('https://node-2-g32w.onrender.com/api/avtomobil')
             .then(response => response.json())
             .then(data => {
-                const tbody = document.getElementById('avtomobillar-body');
+                const tbody = document.getElementById('avtomobil-body');
                 tbody.innerHTML = ''; // oldingi "Yuklanmoqda" ni tozalash
                 if (data.length > 0) {
                     data.forEach(row => {
