@@ -1,36 +1,34 @@
-
-const SUPABASE_URL = 'https://fbpaezxcpykwdfowypqw.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // qisqartirilgan, to'liq qo'ying
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-document.getElementById("registrationForm").addEventListener("submit", async function (e) {
+document.getElementById("testForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const ism = document.getElementById("ism").value.trim();
+    const ism = document.getElementById("ism").value;
     const yosh = parseInt(document.getElementById("yosh").value);
-    const guruh = document.getElementById("guruh").value.trim();
+    const guruh = document.getElementById("guruh").value;
     const oqituvchi_id = parseInt(document.getElementById("oqituvchi_id").value);
 
-    const { data, error } = await supabase
-        .from('project')
-        .insert([{ ism, yosh, guruh, oqituvchi_id }]);
+    const response = await fetch("https://fbpaezxcpykwdfowypqw.supabase.co/rest/v1/project", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZicGFlenhjcHlrd2Rmb3d5cHF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwOTY0NTYsImV4cCI6MjA2MzY3MjQ1Nn0.aFeFK0jvaDoQbPyA2a3qFQu0KFEp4hGPU39n6z8Hhsk",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZicGFlenhjcHlrd2Rmb3d5cHF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwOTY0NTYsImV4cCI6MjA2MzY3MjQ1Nn0.aFeFK0jvaDoQbPyA2a3qFQu0KFEp4hGPU39n6z8Hhsk",
+            "Prefer": "return=representation"
+        },
+        body: JSON.stringify({
+            ism,
+            yosh,
+            guruh,
+            oqituvchi_id
+        })
+    });
 
-    const resultMessage = document.getElementById("resultMessage");
+    const result = document.getElementById("result");
 
-    if (error) {
-        console.error("Xatolik:", error);
-        resultMessage.style.backgroundColor = "#dc3545"; // qizil
-        resultMessage.textContent = "Xatolik yuz berdi: " + error.message;
+    if (response.ok) {
+        const data = await response.json();
+        result.innerHTML = `<div class="alert alert-success">Ma'lumot muvaffaqiyatli yuborildi</div>`;
     } else {
-        resultMessage.style.backgroundColor = "#28a745"; // yashil
-        resultMessage.textContent = "Muvaffaqiyatli ro'yxatdan o'tdingiz!";
-        document.getElementById("registrationForm").reset();
+        const error = await response.json();
+        result.innerHTML = `<div class="alert alert-danger">Xatolik: <pre>${JSON.stringify(error, null, 2)}</pre></div>`;
     }
-
-    resultMessage.style.display = "block";
-    resultMessage.style.transform = "translateX(-50%) translateY(0)";
-    setTimeout(() => {
-        resultMessage.style.transform = "translateX(-50%) translateY(-100%)";
-    }, 4000);
 });
-
