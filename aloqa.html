@@ -181,6 +181,24 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.close-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+        
+            if (mobileMenuBtn && closeBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                });
+        
+                closeBtn.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            }
+        });
+        </script>
+        
     <!-- Agar iconlar ishlatmoqchi bo'lsangiz, FontAwesome qo'shing -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
