@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // === MOBIL MENYU FUNKSIYASI ===
+document.addEventListener('DOMContentLoaded', () => {
+    // === MOBIL MENYU ===
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const closeBtn = document.querySelector('.close-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === ALOQA FORMASI YUBORISH FUNKSIYASI ===
+    // === FORMA YUBORISH ===
     const form = document.getElementById('contactForm');
     const resultMessage = document.getElementById('resultMessage');
 
@@ -22,13 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const data = {
-                ism: document.getElementById('ism').value,
-                familiya: document.getElementById('familiya').value,
-                email: document.getElementById('email').value,
-                telefon: document.getElementById('telefon').value,
-                xabar: document.getElementById('xabar').value
-            };
+            const ism = document.getElementById('ism')?.value.trim();
+            const familiya = document.getElementById('familiya')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            const telefon = document.getElementById('telefon')?.value.trim();
+            const xabar = document.getElementById('xabar')?.value.trim();
+
+            if (!ism || !email || !xabar) {
+                resultMessage.textContent = 'Iltimos, kerakli maydonlarni to‘ldiring.';
+                resultMessage.style.color = 'red';
+                return;
+            }
+
+            const data = { ism, familiya, email, telefon, xabar };
 
             fetch('https://fbpaezxcpykwdfowypqw.supabase.co/rest/v1/aloqa', {
                 method: 'POST',
@@ -41,18 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(response => {
                 if (response.ok || response.status === 201) {
-                    resultMessage.textContent = 'Xabaringiz muvaffaqiyatli yuborildi!';
+                    resultMessage.textContent = 'Xabaringiz yuborildi!';
                     resultMessage.style.color = 'green';
                     form.reset();
                 } else {
-                    return response.json().then(data => {
-                        throw new Error(data.message || 'Xatolik yuz berdi.');
-                    });
+                    throw new Error('Xatolik yuz berdi. Qayta urinib ko‘ring.');
                 }
             })
             .catch(error => {
-                console.error('Xatolik:', error);
-                resultMessage.textContent = 'Xatolik yuz berdi: ' + error.message;
+                resultMessage.textContent = 'Xatolik: ' + error.message;
                 resultMessage.style.color = 'red';
             });
         });
