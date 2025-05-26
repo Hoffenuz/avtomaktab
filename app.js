@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
           resultMessage.className = "alert alert-success";
       } else {
           const error = await response.json();
-          resultMessage.textContent = "❌ Xatolik:Raqam noto'g'ri kiritildi " ;
+          resultMessage.textContent = "❌ Xatolik:Raqam noto'g'ri kiritildi " + JSON.stringify(error);
           resultMessage.className = "alert alert-danger";
       }
 
