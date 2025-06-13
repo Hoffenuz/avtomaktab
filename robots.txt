@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://avtotestu.uz/sitemap.xml
-Host: https://avtotestu.uz
+Sitemap: https://www.avtotestu.uz/sitemap.xml
