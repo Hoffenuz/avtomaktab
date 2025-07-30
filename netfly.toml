@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "http://maktabavto.uz/*"
-  to = "https://www.maktabavto.uz/:splat"
+  from = "http://avtotestu.uz/*"
+  to = "https://www.avtotestu.uz/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://maktabavto.uz/*"
-  to = "https://www.maktabavto.uz/:splat"
+  from = "https://avtotestu.uz/*"
+  to = "https://www.avtotestu.uz/:splat"
   status = 301
   force = true
